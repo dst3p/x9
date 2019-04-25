@@ -1,5 +1,5 @@
 ﻿using X9.RecordProcessors;
-using X9.RecordProcessors.Interface;
+using X9.RecordProcessors.Abstractions;
 
 namespace X9.X937
 {
@@ -33,7 +33,7 @@ namespace X9.X937
 				case RecordTypes.FileControl: return new FileControlProcessor();
 			}
 
-			return null;
+			return new NullProcessor();
 		}
 	}
 }

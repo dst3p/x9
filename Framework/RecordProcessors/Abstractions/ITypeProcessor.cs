@@ -1,8 +1,8 @@
-﻿namespace X9.RecordProcessors.Interface
+﻿namespace X9.RecordProcessors.Abstractions
 {
     public interface ITypeProcessor
 	{
-		string RecordType { get; set; }
+		//string RecordType { get; set; }
 
 		int ProcessedItemCount { get; set; }
 

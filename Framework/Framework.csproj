@@ -80,8 +80,9 @@
     <Compile Include="Models\FileStructure\X9File.cs" />
     <Compile Include="Models\FileStructure\X9Bundle.cs" />
     <Compile Include="Models\X9Record.cs" />
-    <Compile Include="RecordProcessors\Abstractions\IBaseProcessor.cs" />
+    <Compile Include="RecordProcessors\Abstractions\ITypeProcessor.cs" />
     <Compile Include="RecordProcessors\Abstractions\BaseRecordProcessor.cs" />
+    <Compile Include="RecordProcessors\Abstractions\NullProcessor.cs" />
     <Compile Include="RecordProcessors\AccountTotalsDetailProcessor.cs" />
     <Compile Include="RecordProcessors\BoxSummaryProcessor.cs" />
     <Compile Include="RecordProcessors\BundleControlProcessor.cs" />

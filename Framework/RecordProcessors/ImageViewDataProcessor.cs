@@ -1,6 +1,6 @@
 ﻿using System;
 using X9.Models;
-using X9.RecordProcessors.Interface;
+using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {

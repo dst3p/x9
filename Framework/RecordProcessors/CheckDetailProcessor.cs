@@ -1,7 +1,7 @@
 ﻿using X9.Common;
 using X9.Models;
 using X9.Models.FileStructure;
-using X9.RecordProcessors.Interface;
+using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {

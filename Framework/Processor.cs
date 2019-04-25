@@ -3,7 +3,7 @@ using System.IO;
 using X9.Interfaces;
 using X9.Models.FileStructure;
 using X9.RecordProcessors;
-using X9.RecordProcessors.Interface;
+using X9.RecordProcessors.Abstractions;
 using X9.X937;
 
 namespace X9
@@ -39,13 +39,10 @@ namespace X9
                         // Get record type
                         var recordType = X9Reader.ReadBytesAndConvert(RecordTypeNumBytes);
 
-                        ITypeProcessor recordProcessor = TypeToProcessorFactory.GetProcessor(recordType);
+                        ITypeProcessor processor = TypeToProcessorFactory.GetProcessor(recordType);
 
-                        if (recordProcessor != null)
-                        {
-                            recordProcessor.Parent = this;
-                            recordProcessor.Execute();
-                        }
+                        processor.Parent = this;
+                        processor.Execute();
 
                         // exit after processing file control
                         if (recordType == RecordTypes.FileControl)
@@ -58,11 +55,11 @@ namespace X9
                 }
                 catch (EndOfStreamException end)
                 {
-                //    return "Unexpectedly reached end of stream. " + end.Message;
-                //}
-                //catch (Exception e)
-                //{
-                //    return "An unhandled exception occurred. " + e.Message;
+                    //    return "Unexpectedly reached end of stream. " + end.Message;
+                    //}
+                    //catch (Exception e)
+                    //{
+                    //    return "An unhandled exception occurred. " + e.Message;
                 }
             }
         }

@@ -1,8 +1,8 @@
 ﻿using X9.Models;
 
-namespace X9.RecordProcessors.Interface
+namespace X9.RecordProcessors.Abstractions
 {
-    public abstract class BaseRecordProcessor<T> where T : X9Record
+    public abstract class BaseRecordProcessor<T> : ITypeProcessor where T : X9Record
 	{
 		protected T Model { get; set; }
 
@@ -10,7 +10,7 @@ namespace X9.RecordProcessors.Interface
 
 		public Processor Parent { get; set; }
 
-		public virtual void Execute()
+        public virtual void Execute()
 		{
 			Model = PopulateModel();
 		}
