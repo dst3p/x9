@@ -7,7 +7,27 @@ namespace X9.RecordProcessors
 	{
 		public string RecordType { get; set; } = "01";
 
-		public override void Execute()
+        #region Record Bytes
+
+        public virtual int SpecificationLevelBytes => 2;
+
+        public virtual int TestFileIndicatorBytes => 1;
+
+        public virtual int ImmediateDesignationRoutingNumberBytes => 9;
+
+        public virtual int ImmediateOriginRoutingNumberBytes => 9;
+
+        public virtual int FileHeaderUndefinedRegion1Bytes => 12;
+
+        public virtual int ResendIndicatorBytes => 1;
+
+        public virtual int FileHeaderUndefinedRegion2Bytes => 36;
+
+        public virtual int FileIdModifierBytes => 1;
+
+        #endregion Record Bytes
+
+        public override void Execute()
 		{
 			base.Execute();
 
@@ -16,7 +36,24 @@ namespace X9.RecordProcessors
 
 		protected override FileHeader PopulateModel()
 		{
-			return new FileHeader();
+            var fileHeader = new FileHeader();
+
+            fileHeader.SpecificationLevel = Parent.X9Reader.ReadBytesAndConvert(SpecificationLevelBytes);
+            fileHeader.TestFileIndicator = Parent.X9Reader.ReadBytesAndConvert(TestFileIndicatorBytes);
+            fileHeader.ImmediateDesignationRoutingNumber = Parent.X9Reader.ReadBytesAndConvert(ImmediateDesignationRoutingNumberBytes);
+            fileHeader.ImmediateOriginRoutingNumber = Parent.X9Reader.ReadBytesAndConvert(ImmediateOriginRoutingNumberBytes);
+
+            // read undefined bytes from X9 spec
+            Parent.X9Reader.ReadBytes(FileHeaderUndefinedRegion1Bytes);
+
+            fileHeader.ResendIndicator = Parent.X9Reader.ReadBytesAndConvert(ResendIndicatorBytes);
+
+            // read undefined bytes from x9 spec
+            Parent.X9Reader.ReadBytes(FileHeaderUndefinedRegion2Bytes);
+
+            fileHeader.FileIdModifier = Parent.X9Reader.ReadBytesAndConvert(FileIdModifierBytes);
+
+            return fileHeader;
 		}
 	}
 }

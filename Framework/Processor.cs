@@ -8,7 +8,7 @@ using X9.X937;
 
 namespace X9
 {
-    public abstract class Processor : IX9File, IX9ForwardPresentment, IX9Return
+    public class Processor : IX9File, IX9ForwardPresentment, IX9Return
     {
         public X9File FileSpec { get; set; } = new X9File();
 

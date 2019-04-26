@@ -35,41 +35,6 @@
 			Reserved = reserved;
 		}
 
-		/// <summary>
-		/// Construct the return object with a self-defined record identifier.
-		/// </summary>
-		/// <param name="recordType"></param>
-		/// <param name="payorBankRouting"></param>
-		/// <param name="payorBankRoutingNumberCheckDigit"></param>
-		/// <param name="onUsReturnRecord"></param>
-		/// <param name="itemAmount"></param>
-		/// <param name="returnReason"></param>
-		/// <param name="returnRecordAddendumCount"></param>
-		/// <param name="returnDocumentationTypeIndicator"></param>
-		/// <param name="forwardBundleDate"></param>
-		/// <param name="eceInstitutionItemSequenceNumber"></param>
-		/// <param name="externalProcessingCode"></param>
-		/// <param name="returnNotificationIndicator"></param>
-		/// <param name="returnArchiveTypeIndicator"></param>
-		/// <param name="reserved"></param>
-		public Return(string recordType, string payorBankRouting, string payorBankRoutingNumberCheckDigit, string onUsReturnRecord, string itemAmount, string returnReason, string returnRecordAddendumCount, string returnDocumentationTypeIndicator, string forwardBundleDate, string eceInstitutionItemSequenceNumber, string externalProcessingCode, string returnNotificationIndicator, string returnArchiveTypeIndicator, string reserved)
-		{
-			RecordType = recordType;
-			PayorBankRouting = payorBankRouting;
-			PayorBankRoutingNumberCheckDigit = payorBankRoutingNumberCheckDigit;
-			OnUsReturnRecord = onUsReturnRecord;
-			ItemAmount = itemAmount;
-			ReturnReason = returnReason;
-			ReturnRecordAddendumCount = returnRecordAddendumCount;
-			ReturnDocumentationTypeIndicator = returnDocumentationTypeIndicator;
-			ForwardBundleDate = forwardBundleDate;
-			ECEInstitutionItemSequenceNumber = eceInstitutionItemSequenceNumber;
-			ExternalProcessingCode = externalProcessingCode;
-			ReturnNotificationIndicator = returnNotificationIndicator;
-			ReturnArchiveTypeIndicator = returnArchiveTypeIndicator;
-			Reserved = reserved;
-		}
-
 		public override string RecordType { get; set; } = "31";
 
 		public string PayorBankRouting { get; private set; }

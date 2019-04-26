@@ -61,7 +61,7 @@ namespace X9.RecordProcessors
 			// Read from FileStream in order
 			// NOTE: ORDER HERE IS IMPORTANT - we are reading this record sequentially
 			// based on the X937 spec.
-			return new Return(RecordType,
+			return new Return(
 				Parent.X9Reader.ReadBytesAndConvert(PayorBankRoutingNumBytes),
 				Parent.X9Reader.ReadBytesAndConvert(PayorBankRoutingNumberCheckDigitNumBytes),
 				Parent.X9Reader.ReadBytesAndConvert(OnUsReturnRecordNumBytes),
