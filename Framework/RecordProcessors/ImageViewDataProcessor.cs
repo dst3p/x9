@@ -4,7 +4,7 @@ using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {
-    public class ImageViewDataProcessor : BaseRecordProcessor<ImageViewData>, ITypeProcessor
+    public class ImageViewDataProcessor : RecordProcessor<ImageViewData>, IRecordProcessor
 	{
 		public string RecordType { get; set; } = "52";
 

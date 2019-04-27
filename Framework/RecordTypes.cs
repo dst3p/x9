@@ -1,4 +1,4 @@
-﻿namespace X9.X937
+﻿namespace X9
 {
     /// <summary>
     /// Constant values that represent records supported in the X937.

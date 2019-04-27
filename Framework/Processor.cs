@@ -1,14 +1,9 @@
-﻿using System;
-using System.IO;
-using X9.Interfaces;
+﻿using System.IO;
 using X9.Models.FileStructure;
-using X9.RecordProcessors;
-using X9.RecordProcessors.Abstractions;
-using X9.X937;
 
 namespace X9
 {
-    public class Processor : IX9File, IX9ForwardPresentment, IX9Return
+    public class Processor
     {
         public X9File FileSpec { get; set; } = new X9File();
 
@@ -22,7 +17,7 @@ namespace X9
 
         public X9ImageView CurrentImage;
 
-        public virtual int RecordTypeNumBytes => 2;
+        public int RecordTypeNumBytes => 2;
 
         public virtual X9BinaryReader X9Reader { get; set; }
 
@@ -39,7 +34,7 @@ namespace X9
                         // Get record type
                         var recordType = X9Reader.ReadBytesAndConvert(RecordTypeNumBytes);
 
-                        ITypeProcessor processor = TypeToProcessorFactory.GetProcessor(recordType);
+                        var processor = TypeToProcessorFactory.GetProcessor(recordType);
 
                         processor.Parent = this;
                         processor.Execute();
@@ -62,90 +57,6 @@ namespace X9
                     //    return "An unhandled exception occurred. " + e.Message;
                 }
             }
-        }
-
-        public virtual void ProcessReturn()
-        {
-            var returnProcessor = new ReturnProcessor();
-
-            returnProcessor.Execute();
-        }
-
-        public virtual void ProcessReturnAddendumA()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void ProcessReturnAddendumB()
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void ProcessReturnAddendumD()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessFileHeader()
-        {
-            var fileHeaderProcessor = new FileHeaderProcessor();
-
-            fileHeaderProcessor.Execute();
-        }
-
-        public void ProcessCashLetterHeader()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessBundleHeader()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessImageViewDetail()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessImageViewData()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessImageViewAnalysis()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessBundleControl()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessCashLetterControl()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessFileControl()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessCheckDetail()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessCheckDetailAddendumA()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ProcessCheckDetailAddendumC()
-        {
-            throw new NotImplementedException();
         }
     }
 }

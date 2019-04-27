@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace X9.RecordProcessors.Abstractions
 {
-    public class NullProcessor : ITypeProcessor
+    public class NullProcessor : IRecordProcessor
     {
         public int ProcessedItemCount { get; set; }
 

@@ -4,7 +4,7 @@ using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {
-    public class CashLetterHeaderProcessor : BaseRecordProcessor<CashLetterHeader>, ITypeProcessor
+    public class CashLetterHeaderProcessor : RecordProcessor<CashLetterHeader>, IRecordProcessor
 	{
 		public string RecordType { get; set; } = "10";
 

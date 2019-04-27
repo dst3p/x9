@@ -1,7 +1,7 @@
 ﻿using MiscUtil.Conversion;
 using System.IO;
 using System.Text;
-using X9.Common;
+using X9.Common.Extensions;
 
 namespace X9
 {

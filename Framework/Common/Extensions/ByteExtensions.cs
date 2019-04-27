@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
 
-namespace X9.Common
+namespace X9.Common.Extensions
 {
-    public static class Extensions
+    public static class ByteExtensions
 	{
 		/// <summary>
 		/// Convert an EBCDIC byte array to an ASCII string.

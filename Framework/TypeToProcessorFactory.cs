@@ -1,11 +1,11 @@
 ﻿using X9.RecordProcessors;
 using X9.RecordProcessors.Abstractions;
 
-namespace X9.X937
+namespace X9
 {
     public static class TypeToProcessorFactory
 	{
-		public static ITypeProcessor GetProcessor(string recordType)
+		public static IRecordProcessor GetProcessor(string recordType)
 		{
 			switch (recordType)
 			{

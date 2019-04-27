@@ -3,7 +3,7 @@ using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {
-    public class RoutingNumberSummaryProcessor : BaseRecordProcessor<RoutingNumberSummary>, ITypeProcessor
+    public class RoutingNumberSummaryProcessor : RecordProcessor<RoutingNumberSummary>, IRecordProcessor
 	{
 		public string RecordType { get; set; } = "85";
 

@@ -4,7 +4,7 @@ using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {
-    public class BundleHeaderProcessor : BaseRecordProcessor<BundleHeader>, ITypeProcessor
+    public class BundleHeaderProcessor : RecordProcessor<BundleHeader>, IRecordProcessor
 	{
 		public string RecordType { get; set; } = "20";
 

@@ -3,7 +3,7 @@ using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {
-    public class FileControlProcessor : BaseRecordProcessor<FileControl>, ITypeProcessor
+    public class FileControlProcessor : RecordProcessor<FileControl>, IRecordProcessor
 	{
 		public string RecordType { get; set; } = "99";
 

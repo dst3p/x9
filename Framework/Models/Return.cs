@@ -2,6 +2,8 @@
 {
     public class Return : X9Record
 	{
+        public Return() { }
+
 		/// <summary>
 		/// Construct the Return object with the default record type identifier of 31.
 		/// </summary>
@@ -37,31 +39,31 @@
 
 		public override string RecordType { get; set; } = "31";
 
-		public string PayorBankRouting { get; private set; }
+		public string PayorBankRouting { get; set; }
 
-		public string PayorBankRoutingNumberCheckDigit { get; private set; }
+		public string PayorBankRoutingNumberCheckDigit { get; set; }
 
-		public string OnUsReturnRecord { get; private set; }
+		public string OnUsReturnRecord { get; set; }
 
-		public string ItemAmount { get; private set; }
+		public string ItemAmount { get; set; }
 
-		public string ReturnReason { get; private set; }
+		public string ReturnReason { get; set; }
 
-		public string ReturnRecordAddendumCount { get; private set; }
+		public string ReturnRecordAddendumCount { get; set; }
 
-		public string ReturnDocumentationTypeIndicator { get; private set; }
+		public string ReturnDocumentationTypeIndicator { get; set; }
 
-		public string ForwardBundleDate { get; private set; }
+		public string ForwardBundleDate { get; set; }
 
-		public string ECEInstitutionItemSequenceNumber { get; private set; }
+		public string ECEInstitutionItemSequenceNumber { get; set; }
 
-		public string ExternalProcessingCode { get; private set; }
+		public string ExternalProcessingCode { get; set; }
 
-		public string ReturnNotificationIndicator { get; private set; }
+		public string ReturnNotificationIndicator { get; set; }
 
-		public string ReturnArchiveTypeIndicator { get; private set; }
+		public string ReturnArchiveTypeIndicator { get; set; }
 
-		public string Reserved { get; private set; }
+		public string Reserved { get; set; }
 
 		public string FullRoutingNumber => PayorBankRouting + PayorBankRoutingNumberCheckDigit;
 

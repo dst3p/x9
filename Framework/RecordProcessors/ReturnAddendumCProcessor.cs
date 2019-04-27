@@ -3,7 +3,7 @@ using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {
-    public class ReturnAddendumCProcessor : BaseRecordProcessor<ReturnAddendumC>, ITypeProcessor
+    public class ReturnAddendumCProcessor : RecordProcessor<ReturnAddendumC>, IRecordProcessor
 	{
 		public string RecordType { get; set; } = "34";
 

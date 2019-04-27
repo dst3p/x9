@@ -3,7 +3,7 @@ using X9.RecordProcessors.Abstractions;
 
 namespace X9.RecordProcessors
 {
-    public class CashLetterControlProcessor : BaseRecordProcessor<CashLetterControl>, ITypeProcessor
+    public class CashLetterControlProcessor : RecordProcessor<CashLetterControl>, IRecordProcessor
 	{
 		public string RecordType { get; set; } = "90";
 

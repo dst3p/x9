@@ -2,7 +2,7 @@
 
 namespace X9.RecordProcessors.Abstractions
 {
-    public abstract class BaseRecordProcessor<T> : ITypeProcessor where T : X9Record
+    public abstract class RecordProcessor<T> : IRecordProcessor where T : X9Record
 	{
 		protected T Model { get; set; }
 
