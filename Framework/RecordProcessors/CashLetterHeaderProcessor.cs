@@ -8,7 +8,19 @@ namespace X9.RecordProcessors
 	{
 		public string RecordType { get; set; } = "10";
 
-		public override void Execute()
+        public virtual int CollectionTypeIndicatorBytes => 2;
+
+        public virtual int DestinationRoutingNumberBytes => 9;
+
+        public virtual int ECEInstitutionRoutingNumberBytes => 9;
+
+        public virtual int UndefinedRegion1Bytes => 16;
+
+        public virtual int CashLetterCreationTimeBytes => 4;
+
+        public virtual int CashLetterRecordTypeIndicatorBytes => 1;
+
+        public override void Execute()
 		{
 			base.Execute();
 
@@ -20,7 +32,11 @@ namespace X9.RecordProcessors
 
 		protected override CashLetterHeader PopulateModel()
 		{
-			return new CashLetterHeader();
+			var cashLetterHeader = new CashLetterHeader();
+
+            cashLetterHeader.CollectionTypeIndicator = Parent.X9Reader.ReadBytesAndConvert(CollectionTypeIndicatorBytes);
+
+            return cashLetterHeader;
 		}
 	}
 }
