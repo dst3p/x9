@@ -1,6 +1,10 @@
 # X9 Framework
 
-Framework written in C# for parsing X9.37 files. All processor classes and models are either virtual or abstract, allowing 
+Framework written in C# for parsing X9.37 files.
+
+## Recognition
+
+Big Endian garbage from the IBM mainframe crap is handled by Jon Skeet's awesome [MiscUtil](https://github.com/loory/MiscUtil) package.
 
 ## Usage
 
