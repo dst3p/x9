@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Linq;
 using X9.Common.Extensions;
 
 namespace X9.Test
@@ -18,11 +19,11 @@ namespace X9.Test
                     processor.Execute(inputStream);
                 }
 
-                File.WriteAllText($"{AppSettings.OutputFilesPath}X9_JSON_Test.json", processor.FileSpec.ToJson());
-                File.WriteAllText($"{AppSettings.OutputFilesPath}X9_JSON_Test.xml", processor.FileSpec.ToXml());
-            }
+                var fileName = file.Split('\\').Last();
 
-            Console.ReadLine();
+                File.WriteAllText($"{AppSettings.OutputFilesPath}{DateTime.Now:yyyyMMddhhmm}_{fileName}.json", processor.FileSpec.ToJson());
+                //File.WriteAllText($"{AppSettings.OutputFilesPath}X9_JSON_Test.xml", processor.FileSpec.ToXml());
+            }
         }
 
         private static string[] GetX9Files()

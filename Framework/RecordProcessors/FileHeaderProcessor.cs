@@ -9,7 +9,7 @@ namespace X9.RecordProcessors
 
         #region Record Bytes
 
-        public virtual int SpecificationLevelBytes => 2;
+        public virtual int StandardLevelBytes => 2;
 
         public virtual int TestFileIndicatorBytes => 1;
 
@@ -38,7 +38,7 @@ namespace X9.RecordProcessors
 		{
             var fileHeader = new FileHeader();
 
-            fileHeader.SpecificationLevel = Parent.X9Reader.ReadBytesAndConvert(SpecificationLevelBytes);
+            fileHeader.SpecificationLevel = Parent.X9Reader.ReadBytesAndConvert(StandardLevelBytes);
             fileHeader.TestFileIndicator = Parent.X9Reader.ReadBytesAndConvert(TestFileIndicatorBytes);
             fileHeader.ImmediateDesignationRoutingNumber = Parent.X9Reader.ReadBytesAndConvert(ImmediateDesignationRoutingNumberBytes);
             fileHeader.ImmediateOriginRoutingNumber = Parent.X9Reader.ReadBytesAndConvert(ImmediateOriginRoutingNumberBytes);

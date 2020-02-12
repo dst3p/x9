@@ -8,6 +8,9 @@ namespace X9.RecordProcessors
 	{
 		public string RecordType { get; set; } = "70";
 
+        public virtual int UndefinedRegion1Bytes => 16;
+        public virtual int MicrValidTotalAmountBytes => 12;
+
 		public override void Execute()
 		{
 			AddLastItemToBundle();
@@ -25,7 +28,12 @@ namespace X9.RecordProcessors
 
 		protected override BundleControl PopulateModel()
 		{
-			return new BundleControl();
+			var bundleControl = new BundleControl();
+
+            bundleControl.UndefinedRegion = Parent.X9Reader.ReadBytesAndConvert(UndefinedRegion1Bytes);
+            bundleControl.MicrValidTotalAmount = Parent.X9Reader.ReadBytesAndConvert(MicrValidTotalAmountBytes);
+
+            return bundleControl;
 		}
 
 		private void AddLastItemToBundle()

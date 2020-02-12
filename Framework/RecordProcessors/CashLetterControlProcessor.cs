@@ -7,6 +7,9 @@ namespace X9.RecordProcessors
 	{
 		public string RecordType { get; set; } = "90";
 
+        public virtual int UndefinedRegionBytes => 55;
+        public virtual int SettlementDateBytes => 8;
+
 		public override void Execute()
 		{
 			base.Execute();
@@ -24,7 +27,12 @@ namespace X9.RecordProcessors
 
 		protected override CashLetterControl PopulateModel()
 		{
-			return new CashLetterControl();
+			var cashLetterControl = new CashLetterControl();
+
+            cashLetterControl.UndefinedRegion = Parent.X9Reader.ReadBytesAndConvert(UndefinedRegionBytes);
+            cashLetterControl.SettlementDate = Parent.X9Reader.ReadBytesAndConvert(SettlementDateBytes);
+
+            return cashLetterControl;
 		}
 	}
 }
