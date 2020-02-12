@@ -4,56 +4,53 @@ using X9.RecordProcessors.Abstractions;
 namespace X9.RecordProcessors
 {
     public class FileHeaderProcessor : RecordProcessor<FileHeader>, IRecordProcessor
-	{
-		public string RecordType { get; set; } = "01";
+    {
+        public string RecordType { get; set; } = "01";
 
         #region Record Bytes
 
         public virtual int StandardLevelBytes => 2;
-
-        public virtual int TestFileIndicatorBytes => 1;
-
+        public virtual int FileTypeIndicatorBytes => 1;
         public virtual int ImmediateDesignationRoutingNumberBytes => 9;
-
         public virtual int ImmediateOriginRoutingNumberBytes => 9;
-
-        public virtual int FileHeaderUndefinedRegion1Bytes => 12;
-
+        public virtual int FileCreationDateBytes => 8;
+        public virtual int FileCreationTimeBytes => 4;
         public virtual int ResendIndicatorBytes => 1;
-
-        public virtual int FileHeaderUndefinedRegion2Bytes => 36;
-
+        public virtual int ImmediateDesignationNameBytes => 18;
+        public virtual int ImmediateOriginNameBytes => 18;
         public virtual int FileIdModifierBytes => 1;
+        public virtual int CountryCodeBytes => 2;
+        public virtual int UserFieldBytes => 4;
+        public virtual int ReservedBytes => 1;
 
         #endregion Record Bytes
 
         public override void Execute()
-		{
-			base.Execute();
+        {
+            base.Execute();
 
-			Parent.FileSpec.FileHeader = Model;
-		}
+            Parent.FileSpec.FileHeader = Model;
+        }
 
-		protected override FileHeader PopulateModel()
-		{
+        protected override FileHeader PopulateModel()
+        {
             var fileHeader = new FileHeader();
 
-            fileHeader.SpecificationLevel = Parent.X9Reader.ReadBytesAndConvert(StandardLevelBytes);
-            fileHeader.TestFileIndicator = Parent.X9Reader.ReadBytesAndConvert(TestFileIndicatorBytes);
+            fileHeader.StandardLevel = Parent.X9Reader.ReadBytesAndConvert(StandardLevelBytes);
+            fileHeader.FileTypeIndicator = Parent.X9Reader.ReadBytesAndConvert(FileTypeIndicatorBytes);
             fileHeader.ImmediateDesignationRoutingNumber = Parent.X9Reader.ReadBytesAndConvert(ImmediateDesignationRoutingNumberBytes);
             fileHeader.ImmediateOriginRoutingNumber = Parent.X9Reader.ReadBytesAndConvert(ImmediateOriginRoutingNumberBytes);
-
-            // read undefined bytes from X9 spec
-            Parent.X9Reader.ReadBytes(FileHeaderUndefinedRegion1Bytes);
-
+            fileHeader.FileCreationDate = Parent.X9Reader.ReadBytesAndConvert(FileCreationDateBytes);
+            fileHeader.FileCreationTime = Parent.X9Reader.ReadBytesAndConvert(FileCreationTimeBytes);
             fileHeader.ResendIndicator = Parent.X9Reader.ReadBytesAndConvert(ResendIndicatorBytes);
-
-            // read undefined bytes from x9 spec
-            Parent.X9Reader.ReadBytes(FileHeaderUndefinedRegion2Bytes);
-
+            fileHeader.ImmediateDesignationName = Parent.X9Reader.ReadBytesAndConvert(ImmediateDesignationNameBytes);
+            fileHeader.ImmediateOriginName = Parent.X9Reader.ReadBytesAndConvert(ImmediateOriginNameBytes);
             fileHeader.FileIdModifier = Parent.X9Reader.ReadBytesAndConvert(FileIdModifierBytes);
+            fileHeader.CountryCode = Parent.X9Reader.ReadBytesAndConvert(CountryCodeBytes);
+            fileHeader.UserField = Parent.X9Reader.ReadBytesAndConvert(UserFieldBytes);
+            fileHeader.Reserved = Parent.X9Reader.ReadBytesAndConvert(ReservedBytes);
 
             return fileHeader;
-		}
-	}
+        }
+    }
 }

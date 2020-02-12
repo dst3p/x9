@@ -7,9 +7,12 @@ namespace X9.RecordProcessors
     public class BundleControlProcessor : RecordProcessor<BundleControl>, IRecordProcessor
 	{
 		public string RecordType { get; set; } = "70";
-
-        public virtual int UndefinedRegion1Bytes => 16;
+        public virtual int BundleItemCountBytes => 4;
+        public virtual int BundleTotalAmountBytes => 12;
         public virtual int MicrValidTotalAmountBytes => 12;
+        public virtual int ImagesWithinBundleCountBytes => 5;
+        public virtual int UserFieldBytes => 20;
+        public virtual int ReservedBytes => 25;
 
 		public override void Execute()
 		{
@@ -30,9 +33,13 @@ namespace X9.RecordProcessors
 		{
 			var bundleControl = new BundleControl();
 
-            bundleControl.UndefinedRegion = Parent.X9Reader.ReadBytesAndConvert(UndefinedRegion1Bytes);
+            bundleControl.BundleItemCount = Parent.X9Reader.ReadBytesAndConvert(BundleItemCountBytes);
+            bundleControl.BundleTotalAmount = Parent.X9Reader.ReadBytesAndConvert(BundleTotalAmountBytes);
             bundleControl.MicrValidTotalAmount = Parent.X9Reader.ReadBytesAndConvert(MicrValidTotalAmountBytes);
-
+            bundleControl.ImagesWithinBundleCount = Parent.X9Reader.ReadBytesAndConvert(ImagesWithinBundleCountBytes);
+            bundleControl.UserField = Parent.X9Reader.ReadBytesAndConvert(UserFieldBytes);
+            bundleControl.Reserved = Parent.X9Reader.ReadBytesAndConvert(ReservedBytes);
+            
             return bundleControl;
 		}
 

@@ -7,13 +7,13 @@ namespace X9.Models.FileStructure
 		public X9File()
 		{
 			FileHeader = new FileHeader();
-			CashLetters = new Collection<X9CashLetter>();
+			CashLetter = new X9CashLetter();
 			FileControl = new FileControl();
 		}
 
 		public FileHeader FileHeader { get; set; }
 
-		public Collection<X9CashLetter> CashLetters { get; set; }
+		public X9CashLetter CashLetter { get; set; }
 
 		public FileControl FileControl { get; set; }
 	}

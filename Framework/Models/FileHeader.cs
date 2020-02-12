@@ -4,9 +4,9 @@
 	{
 		public override string RecordType { get; set; } = "01";
 
-		public string SpecificationLevel { get; set; }
+		public string StandardLevel { get; set; }
 
-		public string TestFileIndicator { get; set; }
+		public string FileTypeIndicator { get; set; }
 
 		public string ImmediateDesignationRoutingNumber { get; set; }
 
