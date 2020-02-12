@@ -11,5 +11,8 @@
         public string EndorsingBankConversionIndicator { get; set; }
         public string EndorsingBankCorrectionIndicator { get; set; }
         public string ReturnReason { get; set; }
+        public string UserField { get; set; }
+        public string EndorsingBankIdentifier { get; set; }
+        public string Reserved { get; set; }
 	}
 }

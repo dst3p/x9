@@ -9,10 +9,12 @@ namespace X9.RecordProcessors
 	{
 		public string RecordType { get; set; } = "50";
         public virtual int ImageIndicatorBytes => 1;
-        public virtual int UndefinedRegion1Bytes => 17;
+        public virtual int ImageCreatorRoutingNumberBytes => 9;
+        public virtual int ImageCreatorDateBytes => 8;
         public virtual int ImageViewFormatIndicatorBytes => 2;
         public virtual int ImageViewCompressionAlgorithmIdentifierBytes => 2;
-        public virtual int UndefinedRegion2Bytes => 8;
+        public virtual int ImageViewDataSizeBytes => 7;
+        public virtual int ViewSideIndicatorBytes => 1;
         public virtual int ViewDescriptorBytes => 2;
         public virtual int DigitalSignatureIndicatorBytes => 1;
         public virtual int DigitalSignatureMethodBytes => 2;
@@ -20,6 +22,8 @@ namespace X9.RecordProcessors
         public virtual int StartOfProtectedDataBytes => 7;
         public virtual int LengthOfProtectedDataBytes => 7;
         public virtual int ImageRecreateIndicatorBytes => 1;
+        public virtual int UserFieldBytes => 8;
+        public virtual int ReservedBytes => 15;
 
 		public override void Execute()
 		{
@@ -38,10 +42,12 @@ namespace X9.RecordProcessors
 			var imageViewDetail = new ImageViewDetail();
 
             imageViewDetail.ImageIndicator = Parent.X9Reader.ReadBytesAndConvert(ImageIndicatorBytes);
-            Parent.X9Reader.ReadBytes(UndefinedRegion1Bytes);
+            imageViewDetail.ImageCreatorRoutingNumber = Parent.X9Reader.ReadBytesAndConvert(ImageCreatorRoutingNumberBytes);
+            imageViewDetail.ImageCreatorDate = Parent.X9Reader.ReadBytesAndConvert(ImageCreatorDateBytes);
             imageViewDetail.ImageViewFormatIndicator = Parent.X9Reader.ReadBytesAndConvert(ImageViewFormatIndicatorBytes);
             imageViewDetail.ImageViewCompressionAlgorithmIdentifier = Parent.X9Reader.ReadBytesAndConvert(ImageViewCompressionAlgorithmIdentifierBytes);
-            Parent.X9Reader.ReadBytes(UndefinedRegion2Bytes);
+            imageViewDetail.ImageViewDataSize = Parent.X9Reader.ReadBytesAndConvert(ImageViewDataSizeBytes);
+            imageViewDetail.ViewSideIndicator = Parent.X9Reader.ReadBytesAndConvert(ViewSideIndicatorBytes);
             imageViewDetail.ViewDescriptor = Parent.X9Reader.ReadBytesAndConvert(ViewDescriptorBytes);
             imageViewDetail.DigitalSignatureIndicator = Parent.X9Reader.ReadBytesAndConvert(DigitalSignatureIndicatorBytes);
             imageViewDetail.DigitalSignatureMethod = Parent.X9Reader.ReadBytesAndConvert(DigitalSignatureMethodBytes);
@@ -49,6 +55,8 @@ namespace X9.RecordProcessors
             imageViewDetail.StartOfProtectedData = Parent.X9Reader.ReadBytesAndConvert(StartOfProtectedDataBytes);
             imageViewDetail.LengthOfProtectedData = Parent.X9Reader.ReadBytesAndConvert(LengthOfProtectedDataBytes);
             imageViewDetail.ImageRecreateIndicator = Parent.X9Reader.ReadBytesAndConvert(ImageRecreateIndicatorBytes);
+            imageViewDetail.UserField = Parent.X9Reader.ReadBytesAndConvert(UserFieldBytes);
+            imageViewDetail.Reserved = Parent.X9Reader.ReadBytesAndConvert(ReservedBytes);
 
             return imageViewDetail;
 		}

@@ -15,6 +15,9 @@ namespace X9.RecordProcessors
         public virtual int EndorsingBankConversionIndicatorBytes => 1;
         public virtual int EndorsingBankCorrectionIndicatorBytes => 1;
         public virtual int ReturnReasonBytes => 1;
+        public virtual int UserFieldBytes => 19;
+        public virtual int EndorsingBankIdentifierBytes => 1;
+        public virtual int ReservedBytes=> 20;
 
 		public override void Execute()
 		{
@@ -35,6 +38,9 @@ namespace X9.RecordProcessors
             checkDetailAddendumC.EndorsingBankConversionIndicator = Parent.X9Reader.ReadBytesAndConvert(EndorsingBankConversionIndicatorBytes);
             checkDetailAddendumC.EndorsingBankCorrectionIndicator = Parent.X9Reader.ReadBytesAndConvert(EndorsingBankCorrectionIndicatorBytes);
             checkDetailAddendumC.ReturnReason = Parent.X9Reader.ReadBytesAndConvert(ReturnReasonBytes);
+            checkDetailAddendumC.UserField = Parent.X9Reader.ReadBytesAndConvert(UserFieldBytes);
+            checkDetailAddendumC.EndorsingBankIdentifier = Parent.X9Reader.ReadBytesAndConvert(EndorsingBankIdentifierBytes);
+            checkDetailAddendumC.Reserved = Parent.X9Reader.ReadBytesAndConvert(ReservedBytes);
 
             return checkDetailAddendumC;
 		}

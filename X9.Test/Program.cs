@@ -1,8 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Text;
 using X9.Common.Extensions;
 
 namespace X9.Test
@@ -54,10 +56,9 @@ namespace X9.Test
                     }
                 }
 
-                output = checkDetails.ToJson();
-
-                File.WriteAllText($"{AppSettings.OutputFilesPath}{DateTime.Now:yyyyMMddhhmm}_{fileName}.json", output);
+                File.WriteAllText($"{AppSettings.OutputFilesPath}{DateTime.Now:yyyyMMddhhmm}_{fileName}.json", checkDetails.ToJson());
                 File.WriteAllText($"{AppSettings.OutputFilesPath}{DateTime.Now:yyyyMMddhhmm}_{fileName}_FULL.json", processor.FileSpec.ToJson());
+                File.WriteAllText($"{AppSettings.OutputFilesPath}{DateTime.Now:yyyyMMddhhmm}_{fileName}.csv", ToCsv(checkDetails));
                 //File.WriteAllText($"{AppSettings.OutputFilesPath}X9_JSON_Test.xml", processor.FileSpec.ToXml());
             }
         }
@@ -66,6 +67,39 @@ namespace X9.Test
         {
             // get files in path
             return Directory.GetFiles(AppSettings.InputFilesPath);
+        }
+
+        
+
+        /// <summary>
+        /// https://gist.github.com/luisdeol/c2c276796a92c8e3246ce2cd3e17e1df
+        /// </summary>
+        public static string ToCsv<T>(IList<T> list)
+        {
+            var sb = new StringBuilder();
+            var properties = typeof(T).GetProperties();
+            var header = "";
+
+            foreach (var prop in properties)
+            {
+                header += prop.Name + ",";
+            }
+
+            header = header.Substring(0, header.Length - 1);
+            sb.AppendLine(header);
+
+            foreach (var listItem in list)
+            {
+                var line = "";
+                foreach (var prop in properties)
+                {
+                    line += prop.GetValue(listItem, null) + ",";
+                }
+                line = line.Substring(0, line.Length - 1);
+                sb.AppendLine(line);
+            }
+
+            return sb.ToString();
         }
     }
 }
