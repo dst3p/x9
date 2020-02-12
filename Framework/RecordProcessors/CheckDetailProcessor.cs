@@ -25,18 +25,14 @@ namespace X9.RecordProcessors
 
 		public override void Execute()
 		{
-			if (Parent.CurrentCheckItem != null)
-			{
-				Parent.CurrentBundle.CheckItems.Add(Parent.CurrentCheckItem);
-			}
-
-			base.Execute();
+            base.Execute();
 
 			Parent.CurrentCheckItem = new X9ForwardPresentmentItem
 			{
 				CheckDetail = Model
 			};
 
+            Parent.CurrentBundle.CheckItems.Add(Parent.CurrentCheckItem);
 			Parent.CurrentBundle.BundleType = BundleType.ForwardPresentment;
 		}
 

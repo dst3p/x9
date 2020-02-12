@@ -16,8 +16,6 @@ namespace X9.RecordProcessors
 
 		public override void Execute()
 		{
-			AddLastItemToBundle();
-
 			base.Execute();
 
 			if (Parent.CurrentBundle == null)
