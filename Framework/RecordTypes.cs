@@ -39,6 +39,8 @@
 
 		public const string ImageViewAnalysis = "54";
 
+		public const string CreditReconciliationRecord = "61";
+
 		public const string BundleControl = "70";
 
 		public const string BoxSummary = "75";

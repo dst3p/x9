@@ -57,6 +57,7 @@
     <Compile Include="Models\BoxSummary.cs" />
     <Compile Include="Models\BundleControl.cs" />
     <Compile Include="Models\BundleHeader.cs" />
+    <Compile Include="Models\CreditReconciliationRecord.cs" />
     <Compile Include="Models\FileStructure\X9CashLetter.cs" />
     <Compile Include="Models\CashLetterControl.cs" />
     <Compile Include="Models\CashLetterHeader.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="RecordProcessors\CheckDetailAddendumBProcessor.cs" />
     <Compile Include="RecordProcessors\CheckDetailAddendumCProcessor.cs" />
     <Compile Include="RecordProcessors\CheckDetailProcessor.cs" />
+    <Compile Include="RecordProcessors\CreditRecordProcessor.cs" />
     <Compile Include="RecordProcessors\FileControlProcessor.cs" />
     <Compile Include="RecordProcessors\FileHeaderProcessor.cs" />
     <Compile Include="RecordProcessors\ImageViewAnalysisProcessor.cs" />

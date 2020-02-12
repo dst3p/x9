@@ -31,6 +31,7 @@ namespace X9
 				case RecordTypes.RoutingNumberSummary: return new RoutingNumberSummaryProcessor();
 				case RecordTypes.CashLetterControl: return new CashLetterControlProcessor();
 				case RecordTypes.FileControl: return new FileControlProcessor();
+				case RecordTypes.CreditReconciliationRecord: return new CreditRecordProcessor();
 			}
 
 			return new NullProcessor();
