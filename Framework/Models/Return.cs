@@ -66,9 +66,5 @@
 		public string Reserved { get; set; }
 
 		public string FullRoutingNumber => PayorBankRouting + PayorBankRoutingNumberCheckDigit;
-
-		public string AccountNumber { get; set; }
-
-		public string CheckNumber { get; set; }
 	}
 }
