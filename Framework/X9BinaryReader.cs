@@ -5,22 +5,22 @@ using X9.Common.Extensions;
 
 namespace X9
 {
-    public class X9BinaryReader : BinaryReader
+    public sealed class X9BinaryReader : BinaryReader
 	{
 		/// <summary>
 		/// The number of bytes to read to get the record length.
 		/// </summary>
-		public virtual int RecordLengthNumBytes => 4;
+		public int RecordLengthNumBytes => 4;
 
 		/// <summary>
 		/// Tracks the starting position of the current record being processed.
 		/// </summary>
-		public long CurrentRecordStartPosition { get; set; }
+        private long CurrentRecordStartPosition { get; set; }
 
 		/// <summary>
 		/// Value indicating the length of the record before reading the first 4 bytes.
 		/// </summary>
-		public long CurrentRecordBaseLength
+        private long CurrentRecordBaseLength
 		{
 			get
 			{
@@ -31,7 +31,7 @@ namespace X9
 		/// <summary>
 		///  Value indicating the length of the record after reading the first 4 bytes.
 		/// </summary>
-		public long CurrentRecordLength { get; set; }
+        private long CurrentRecordLength { get; set; }
 
 		#region Constructors
 

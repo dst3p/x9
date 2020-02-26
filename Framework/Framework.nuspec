@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/dst3p/x9</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>X9 ICL dotnet</tags>
+    <!-- Dependencies are automatically installed when the package is installed -->
+    <dependencies>
+        <dependency id="JonSkeet.MiscUtil" version="0.2.0" />
+        <dependency id="Newtonsoft.Json" version="12.0.2" />
+    </dependencies>
+  </metadata>
+</package>

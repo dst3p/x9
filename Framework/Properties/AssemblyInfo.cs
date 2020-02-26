@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("X937")]
-[assembly: AssemblyDescription("Framework for interacting with X9.37 file format.")]
-[assembly: AssemblyCompany("Texas Capital Banchshares, Inc.")]
-[assembly: AssemblyProduct("X937.Convert")]
-[assembly: AssemblyCopyright("Copyright © Texas Capital Banchshares, Inc. 2018")]
+[assembly: AssemblyTitle("X9.Framework")]
+[assembly: AssemblyDescription("Framework for interacting with X9 (ICL) file format.")]
+[assembly: AssemblyCompany("dst3p")]
+[assembly: AssemblyProduct("X9 Framework")]
+[assembly: AssemblyCopyright("Copyright © Derek Stepan 2020")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
@@ -28,5 +28,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.*")]

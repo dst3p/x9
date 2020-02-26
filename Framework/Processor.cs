@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using X9.Models.FileStructure;
 
 namespace X9
@@ -48,13 +49,10 @@ namespace X9
                         X9Reader.MoveNext().GetNext();
                     }
                 }
-                catch (EndOfStreamException end)
+                catch (Exception e)
                 {
-                    //    return "Unexpectedly reached end of stream. " + end.Message;
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    return "An unhandled exception occurred. " + e.Message;
+                    Console.WriteLine(e.Message);
+                    throw;
                 }
             }
         }
