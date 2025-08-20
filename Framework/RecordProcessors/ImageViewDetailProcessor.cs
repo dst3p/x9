@@ -27,15 +27,15 @@ namespace X9.RecordProcessors
 
 		public override void Execute()
 		{
-			AddImageToBundle();
-
 			base.Execute();
 
 			Parent.CurrentImage = new X9ImageView
 			{
 				ImageViewDetail = Model
 			};
-		}
+
+            AddImageToBundle();
+        }
 
 		protected override ImageViewDetail PopulateModel()
 		{
